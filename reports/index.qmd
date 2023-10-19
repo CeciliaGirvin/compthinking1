@@ -1,0 +1,75 @@
+---
+title: "Compthinking1"
+date: 2023-10-09
+format: html
+---
+
+
+# Team Porifera 
+
+## Q1 
+Here I am matching these hypothetical types of data with their equivalent R type. I will do my best to explain why as well. 
+
+_Scientific names_
+  R type: character
+  Reasoning: These data are made up of characters (letters)
+  
+_Count of plants in a quadrat_
+  R type: integer
+  Reasoning: A count of plants will always be an integer, there cannot be half of a plant in a quadrat. 
+  
+_Whether or not it rained on a sequence of days_
+  R type: logical
+  Reasoning: this is a TRUE (it rained) or FALSE (it did not rain) data set. 
+  
+_Reaction times of birds to disturbances in seconds_
+  R type: numeric
+  Reasoning: These will be real numbers.
+  
+## Q2 
+Using this chunk of code:
+
+```{r}
+bird_mass_g <- c(100.1, 99.2, 99.3, NA, 100.0, 101.5, 94.7, 99.2, 108.2)
+mean_mass <- mean(bird_mass_g)
+sd_mass <- sd(bird_mass_g)
+is_outlier <- bird_mass_g > mean_mass + 3 * sd_mass
+num_outliers <- sum(is_outlier)
+
+```
+
+This code defines a data set and names it 'bird_mass_g'. It then calculates a series of things from that dataset 
+- mean values
+- standard deviation of the dataset
+- defines outliers as those values beyond 3 standard deviations from the mean
+- counts the number of outliers in the data set
+
+Two mistakes:
+1. the data set has some NA values,those could be dealth with by adding `na.rm = TRUE` to calculate the mean and sd while ignoring those NA values
+2. I think the second error is that outliers are those values greater *or* less than 3 sd from the mean, and this will only calculate for values greater than the mean. I would fix this with: `is_outlier <- bird_mass_g > mean_mass + 3 * sd_mass & bird_mass_g < mean_mass - 3 * sd_mass`
+
+##Q3
+```
+quad_counts <- c(2L, 19L, 4L, 5L, 5L, 12L, 0L, 7L)
+valid_quads <- c(1, 2, 3, 5, 7)
+quad_counts2 <- quad_counts[valid_quads]
+median_count <- median(quad_counts2)
+```
+
+I would change to:
+```
+quad_counts <- c(5L, 5L, 19L, 4L, 12L, 0L, 7L, 2L)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
