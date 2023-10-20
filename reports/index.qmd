@@ -59,6 +59,7 @@ median_count <- median(quad_counts2)
 I would change to:
 ```
 quad_counts <- c(5L, 5L, 19L, 4L, 12L, 0L, 7L, 2L)
+
 ```
 
 
